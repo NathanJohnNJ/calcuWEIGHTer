@@ -1,0 +1,212 @@
+import { View, Text, Modal, TextInput, Picker} from 'react-native-web';
+import { styles } from './styles';
+
+const OpeningModal = (props) => {
+    function closeModal(){
+        props.setOpeningModalIsOpen(false)
+    }
+    return (
+        <Modal
+        animationType="slide"
+        transparent={false}
+        visible={props.openingModalIsOpen}
+        onRequestClose={closeModal}
+        >
+            <View style={styles.modal}>
+                <View style={styles.tableView}>
+
+                    <table style={styles.titleTable} >
+                        <td style={styles.title}>
+                            YOUR CURRENT DETAILS
+                        </td>
+                    </table>
+
+                    <table style={styles.firstTable} >
+                        <tbody style={styles.body}>
+                            <tr style={styles.row}>
+                                <td style={styles.header}>
+                                    Age
+                                </td>
+                                <td style={styles.details}>
+                                    <TextInput
+                                    style={styles.input}
+                                    onChangeText={props.setAge}
+                                    value={props.age}
+                                    keyboardType="numeric" />
+                                </td>
+                                <td style={styles.empty}></td>
+                                <td style={styles.empty}></td>
+                            </tr>
+                            <tr style={styles.row}>
+                                <td style={styles.header}>
+                                    Height
+                                </td>
+                                <td style={{backgroundColor: '#fea', border: 'solid 2px #222'}}>
+                                    <Picker
+                                    style={styles.picker}
+                                    itemStyle={styles.pickerItem}
+                                    onValueChange={props.setHeightUnits}
+                                    selectedValue={props.heightUnits}
+                                    >
+                                        <Picker.Item
+                                        value="Centimeters"
+                                        label="Centimeters" />
+                                        <Picker.Item
+                                        value="Inches"
+                                        label="Inches" />
+                                        <Picker.Item
+                                        value="FeetAndInches"
+                                        label="Feet & Inches" />
+                                    </Picker>
+                                </td>
+                                <td style={styles.details}>
+                                    <TextInput
+                                    style={styles.input}
+                                    onChangeText={props.setHeight}
+                                    value={props.height}
+                                    keyboardType="numeric" />
+                                </td>
+                                <td style={styles.empty}></td>
+                            </tr>
+                            <tr style={styles.row}>
+                                <td style={styles.header}>
+                                    Weight
+                                </td>
+                                <td style={{backgroundColor: '#fea', border: 'solid 2px #222'}}>
+                                    <Picker
+                                    style={styles.picker}
+                                    onValueChange={props.setWeightUnits}
+                                    selectedValue={props.weightUnits}
+                                    >
+                                        <Picker.Item
+                                        value="Kilograms"
+                                        label="Kilograms" />
+                                        <Picker.Item
+                                        value="Pounds"
+                                        label="Pounds" />
+                                        <Picker.Item
+                                        value="StoneAndPounds"
+                                        label="Stone & Pounds" />
+                                    </Picker>
+                                </td>
+                                <td style={styles.details}>
+                                    <TextInput
+                                    style={styles.input}
+                                    onChangeText={props.setWeight}
+                                    value={props.weight}
+                                    keyboardType="numeric" />
+                                </td>
+                                <td style={styles.empty}></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style={styles.table} >
+                    <tbody style={styles.body}>
+                        <tr style={styles.row}>
+                            <td style={styles.header}>
+                                Waist
+                            </td>
+                            <td style={{backgroundColor: '#fea', border: 'solid 2px #222'}}>
+                                <Picker
+                                style={styles.picker}
+                                itemStyle={styles.pickerItem}
+                                onValueChange={props.setWaistUnits}
+                                selectedValue={props.waistUnits}
+                                >
+                                    <Picker.Item
+                                    value="Centimeters"
+                                    label="Centimeters" />
+                                    <Picker.Item
+                                    value="Inches"
+                                    label="Inches" />
+                                </Picker>
+                            </td>
+                            <td style={styles.details}>
+                                <TextInput
+                                style={styles.input}
+                                onChangeText={props.setWaist}
+                                value={props.waist}
+                                keyboardType="numeric" />
+                            </td>
+                            <td style={styles.empty}></td>
+                        </tr>
+                        <tr style={styles.row}>
+                            <td style={styles.header}>
+                                Sex
+                            </td>
+                            <td style={{backgroundColor: '#fea', border: 'solid 2px #222'}}>
+                                <Picker
+                                style={styles.sexPicker}
+                                onValueChange={props.setSex}
+                                selectedValue={props.sex}
+                                >
+                                    <Picker.Item
+                                    value="Please select"
+                                    label="Please select" />
+                                    <Picker.Item
+                                    value="Male"
+                                    label="Male" />
+                                    <Picker.Item
+                                    value="Female"
+                                    label="Female" />
+                                </Picker>
+                            </td>
+                            <td style={styles.empty}></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                        <table style={styles.table} >
+                    <tbody style={styles.body}>
+                        <tr style={styles.row}>
+                            <td style={styles.header}>
+                                Calorie Intake
+                            </td>
+                            <td style={styles.calories}>
+                                <TextInput
+                                style={styles.input}
+                                onChangeText={props.setCalorieIntake}
+                                value={props.calorieIntake}
+                                keyboardType="numeric" />
+                            </td>
+                            <td style={styles.empty}>
+                                kcal/day
+                            </td>
+                        </tr>
+                        <tr style={styles.row}>
+                            <td style={styles.header}>
+                                Exercise
+                            </td>
+                            <td style={{backgroundColor: '#fea', border: 'solid 2px #222'}}>
+                                <Picker
+                                style={styles.sexPicker}
+                                onValueChange={props.setExercise}
+                                selectedValue={props.exercise}
+                                >
+                                    <Picker.Item
+                                    value="Please select"
+                                    label="Please select" />
+                                    <Picker.Item
+                                    value="none"
+                                    label="No Exercise" />
+                                    <Picker.Item
+                                    value="light"
+                                    label="Light (1-2 days)" />
+                                    <Picker.Item
+                                    value="moderate"
+                                    label="Moderate (3-5 days)" />
+                                    <Picker.Item
+                                    value="high"
+                                    label="High (6-7 days)" />
+                                </Picker>
+                            </td>
+                            <td style={styles.empty}>Weekly</td>
+                        </tr>
+                    </tbody>
+                </table>   
+                </View>
+            </View>
+        </Modal>
+    )
+}
+
+export default OpeningModal;
