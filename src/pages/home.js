@@ -7,16 +7,17 @@ const Home = (props) => {
     const [openingModalIsOpen, setOpeningModalIsOpen] = useState(false);
 
     function openOpeningModal(){ 
-        props.setOpeningModalIsOpen(true)
+        setOpeningModalIsOpen(true)
     }
     return (
         <View style={styles.page}>
+            <h1 style={styles.title}>Calcu-WEIGHT-er</h1>
             <View style={styles.btnSection}>
                 <Pressable style={styles.button} onPress={openOpeningModal}>
                     <Text style={styles.btnText}>
                         Let's Begin...
                     </Text>
-                    <OpeningModal openingModalIsOpen={openingModalIsOpen} setOpeningModalIsOpen={setOpeningModalIsOpen} weight={props.weight} height={props.height} setWeight={props.setWeight} setHeight={props.setHeight}  waist={props.waist} setWaist={props.setWaist} age={props.age} setAge={props.setAge}/>
+                    <OpeningModal openingModalIsOpen={openingModalIsOpen} setOpeningModalIsOpen={setOpeningModalIsOpen} weight={props.weight} height={props.height} setWeight={props.setWeight} setHeight={props.setHeight} waist={props.waist} setWaist={props.setWaist} age={props.age} setAge={props.setAge} setHeightUnits={props.setHeightUnits} heightUnits={props.heightUnits} weightUnits={props.weightUnits} setWeightUnits={props.setWeightUnits} sex={props.sex} setSex={props.setSex} calorieIntake={props.calorieIntake} setCalorieIntake={props.setCalorieIntake} exercise={props.exercise} setExercise={props.setExercise} waistUnits={props.waistUnits} setWaistUnits={props.setWaistUnits} />
                 </Pressable>
             </View>
         </View>
